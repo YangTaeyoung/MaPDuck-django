@@ -2,7 +2,6 @@ from konlpy.tag import Kkma
 from konlpy.utils import pprint
 import re
 
-
 # 작성자: 양태영
 # 설명: 크롤러를 통해 받은 내용을 재분리하여 spring에 맞는 dict형식으로 보내기 위한 것.
 
