@@ -2,23 +2,11 @@
   "products": [
     {
       "title": "str",
-      "description": "str",
-      "img_path": "str"
+      "description": "str"
     },
     {
       "title": "str",
-      "description": "str",
-      "img_path": "str"
-    },
-    {
-      "title": "str",
-      "description": "str",
-      "img_path": "str"
-    },
-    {
-      "title": "str",
-      "description": "str",
-      "img_path": "str"
+      "description": "str"
     }
   ]
 }
