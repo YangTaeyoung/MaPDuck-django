@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+from my_set import MY_DATABASES
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -76,16 +76,7 @@ WSGI_APPLICATION = 'mapduck_django.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql', # mysqlclient librarly 설치
-        'NAME': 'MaPDuck',
-        'USER': 'root',
-        'PASSWORD': 'yang968741--', # mariaDB 설치 시 입력한 root 비밀번호 입력
-        'HOST': 'localhost',
-        'PORT': '3306'
-    }
-}
+DATABASES = MY_DATABASES
 
 
 # Password validation
