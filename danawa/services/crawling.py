@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 import json
 from collections import OrderedDict
 
-from ..dto.Product import Product
+from ..dto import Danawa
 
 class DanawaCrawler:
 
@@ -57,7 +57,7 @@ class DanawaCrawler:
                     desc = '/'.join(desc_list)
 
                     # desc end
-                    self.products.append(Product(title, desc, img_path))
+                    self.products.append(Danawa(title, desc, img_path))
 
                 except AttributeError:
                     continue
