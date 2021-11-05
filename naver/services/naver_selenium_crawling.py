@@ -6,7 +6,8 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 import pyperclip
 import time
-from dateutil.parser import parse
+import platform
+
 
 # 작성자: 강동연
 # 설명: Selenium 패키지를 사용해, 네이버 로그인 후 네이버 페이 내역 크롤링
@@ -51,21 +52,29 @@ class NaverCrawler:
 
         tag_id.click()
         pyperclip.copy(id)
-        tag_id.send_keys(Keys.CONTROL, 'v')
 
+        # 운영체제에 따른 복사 키 지정
+        copy_key = Keys.LEFT_CONTROL
+        if platform.system().lower() == "windows":
+            copy_key = Keys.CONTROL
+        elif platform.system().lower() == "darwin":
+            copy_key = Keys.COMMAND
+
+        tag_id.send_keys(copy_key, 'v')
         tag_pw.click()
         pyperclip.copy(pw)
-        tag_pw.send_keys(Keys.CONTROL, 'v')
-
-        login_btn = driver.find_element(By.ID,"log.login")
+        tag_pw.send_keys(copy_key, 'v')
+        login_btn = driver.find_element(By.ID, "log.login")
         login_btn.click()
-        
+
         # 거래 내역 접속
         driver.get("https://order.pay.naver.com/home")
-        
+
+
+
         # 5번 더보기 클릭
         for i in range(5):
-            more_btn = driver.find_element(By.CSS_SELECTOR, "#_moreButton > button")
+            more_btn = driver.find_element(By.XPATH, "//*[@id='_moreButton']/button")
             more_btn.click()
             time.sleep(0.5)
 
@@ -104,7 +113,7 @@ class NaverCrawler:
 
                 _, purchase_at_str = soup.select_one(
                     "#{} > div.goods_item > div > a > ul > li.date".format(key_id)).text.split(" ")
-                purchase_at = parse(purchase_at_str).date()
+                purchase_at = purchase_at_str
 
                 self.products.append(Naver(title,company_name,img_path, purchase_at))
 
