@@ -1,6 +1,5 @@
 
 from ..dto import Naver
-
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -31,7 +30,7 @@ class NaverCrawler:
             'user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36')  # user-agent 이름 설정
         
         # 크롬드라이버 위치 check
-        driver = webdriver.Chrome("C:/chromedriver.exe", chrome_options=options)
+        driver = webdriver.Chrome("/Users/taeyoung/chromedriver", chrome_options=options)
         
         # 네이버 loginURL
         url = 'https://nid.naver.com/nidlogin.login?mode=form&url=https%3A%2F%2Fwww.naver.com'
