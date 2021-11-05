@@ -6,9 +6,13 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 import pyperclip
 import time
+from dateutil.parser import parse
 
 # 작성자: 강동연
 # 설명: Selenium 패키지를 사용해, 네이버 로그인 후 네이버 페이 내역 크롤링
+
+# 수정일: 2021.11.05
+# 수정사항: purchased_at(구매날짜) 추가
 class NaverCrawler:
 
     def __init__(self):
@@ -98,6 +102,10 @@ class NaverCrawler:
                 # 이미지 주소
                 img_path = soup.select_one("#{} > div.goods_item > a > img".format(key_id))["src"]
 
-                self.products.append(Naver(title,company_name,img_path))
+                _, purchase_at_str = soup.select_one(
+                    "#{} > div.goods_item > div > a > ul > li.date".format(key_id)).text.split(" ")
+                purchase_at = parse(purchase_at_str).date()
+
+                self.products.append(Naver(title,company_name,img_path, purchase_at))
 
 
