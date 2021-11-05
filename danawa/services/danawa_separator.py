@@ -29,8 +29,8 @@ class DanawaSeparator:
         prog = re.compile(pattern)
 
         for title in title_list:
-            matches = prog.match(title)
-            if prog.match(title) is not None and len(title) >= 6:
+
+            if prog.fullmatch(title) is not None and len(title) >= 6:
                 result_list.append(title)
 
         # 모델명 찾기 실패
