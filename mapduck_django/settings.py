@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'drf_yasg',
     "danawa",
-    "rest_framework"
+    "rest_framework",
+    "naver",
 ]
 
 MIDDLEWARE = [
