@@ -13,13 +13,12 @@ class MyProductView(APIView):
     def get(self, request):
         id = request.META.get("HTTP_NAVER_ID")
         pw = request.META.get("HTTP_NAVER_PW")
-        print(id)
-        print(pw)
         naver_crawler = NaverCrawler()
         naver_crawler.get_prooduct_list_Naver(id, pw)
         my_product_list = get_my_products(naver_crawler.products)
-        return Response(MyProductSerializer(data=my_product_list, many=True).data)
-
+        serializer = MyProductSerializer(data=my_product_list, many=True)
+        serializer.is_valid()
+        return Response(serializer.data)
 
 class NaverSearchView(APIView):
     @swagger_auto_schema()
