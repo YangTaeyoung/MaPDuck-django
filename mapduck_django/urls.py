@@ -23,6 +23,7 @@ from drf_yasg import openapi
 # swagger 설정
 schema_url_patterns = [
     path('api/danawa/', include('danawa.urls')),
+    path("api/naver/", include('naver.urls')),
 ]
 
 schema_view = get_schema_view(
@@ -32,6 +33,7 @@ schema_view = get_schema_view(
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/danawa/', include('danawa.urls')),
+    path('api/naver/', include('naver.urls')),
 
     # swagger 설정
     url(r'^swagger(?P<format>\.json|\.yaml)$', schema_view.without_ui(cache_timeout=0), name='schema-json'),
