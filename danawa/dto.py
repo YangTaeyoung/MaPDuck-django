@@ -4,6 +4,7 @@ class Danawa:
         self.desc = desc
         self.img_path = img_path
 
+
 class Product:
     def __init__(self, co_id, pr_name, mo_name, desc, img_path, warranty):
         self.co_id = co_id
@@ -11,10 +12,4 @@ class Product:
         self.mo_name = mo_name
         self.warranty = warranty
         self.desc = desc
-        self.img_path = img_path
-
-class Naver:
-    def __init__(self, title, company_name, img_path):
-        self.title = title
-        self.company_name = company_name
         self.img_path = img_path
