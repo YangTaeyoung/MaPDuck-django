@@ -17,15 +17,13 @@ def get_naver_shopping(query):
 
 def get_my_products(navers: list):
     for naver in navers:
-        danawa_separator = DanawaSeparator()
+        danawa_separator = DanawaSeparator(dict())
         my_product_list = list()
         for naver in navers:
-            my_product = MyProduct()
-            my_product.purchased_at = naver.purchased_at
-            temp, title_str = DanawaSeparator.get_company_id(naver.title)
-            mo_name, title_str = DanawaSeparator.get_model_name(title_str)
+            purchased_at = naver.purchased_at
+            temp, title_str = danawa_separator.get_company_id(naver.title)
+            mo_name, title_str = danawa_separator.get_model_name(title_str)
             if mo_name is None:
                 continue
-            my_product.mo_name = mo_name
-            my_product_list.append(my_product)
+            my_product_list.append(MyProduct(mo_name, purchased_at))
     return my_product_list
