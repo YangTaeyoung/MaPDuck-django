@@ -1,3 +1,4 @@
+import selenium.common.exceptions
 
 from ..dto import Naver
 from bs4 import BeautifulSoup
@@ -35,7 +36,8 @@ class NaverCrawler:
             'user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36')  # user-agent 이름 설정
         
         # 크롬드라이버 위치 check
-        driver = webdriver.Chrome("/Users/taeyoung/chromedriver", chrome_options=options)
+        # driver = webdriver.Chrome("/Users/taeyoung/chromedriver", chrome_options=options)
+        driver = webdriver.Chrome("C:/chromedriver.exe", chrome_options=options)
         
         # 네이버 loginURL
         url = 'https://nid.naver.com/nidlogin.login?mode=form&url=https%3A%2F%2Fwww.naver.com'
@@ -74,9 +76,12 @@ class NaverCrawler:
 
         # 5번 더보기 클릭
         for i in range(5):
-            more_btn = driver.find_element(By.XPATH, "//*[@id='_moreButton']/button")
-            more_btn.click()
-            time.sleep(0.5)
+            try:
+                more_btn = driver.find_element(By.XPATH, "//*[@id='_moreButton']/button")
+                more_btn.click()
+                time.sleep(0.5)
+            except selenium.common.exceptions.ElementNotInteractableException:
+                pass
 
         src = driver.page_source
         soup = BeautifulSoup(src, "html.parser")
