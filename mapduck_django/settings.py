@@ -80,7 +80,7 @@ DATABASES = {
         'NAME': 'MaPDuck',
         'USER': 'mapduck',
         'PASSWORD': 'mapduck2021', # mariaDB 설치 시 입력한 root 비밀번호 입력
-        'HOST': '13.209.87.152',
+        'HOST': '54.180.93.250',
         'PORT': '3306'
     }
 }
