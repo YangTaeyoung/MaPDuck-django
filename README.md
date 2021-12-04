@@ -14,5 +14,6 @@
 - 크롤링 모듈은 danawa/services/crawling.py에 정의되어 있습니다. 
 
 <hr/>
-자세한 API는 [MapDuck-Spring Repository] (https://github.com/YangTaeyoung/MaPDuck-spring) 에서 확인할 수 있습니다.
+자세한 API는 [MapDuck-Spring Repository](https://github.com/YangTaeyoung/MaPDuck-spring)   
+에서 확인할 수 있습니다.
 
